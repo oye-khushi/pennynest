@@ -21,7 +21,7 @@ binding = "ASSETS"
 [[d1_databases]]
 binding = "DB"
 database_name = "pennynest-production"
-database_id = "REPLACE_WITH_YOUR_DATABASE_ID"
+database_id = "4e79f061-ed36-4ca6-b5f9-448045715dec"
 
 # ---------------------------------------------------------------------------
 # Optional: pin logs so `npx wrangler tail` is easy to read
