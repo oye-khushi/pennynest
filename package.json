@@ -1,0 +1,23 @@
+{
+  "name": "pennynest",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "PennyNest - student savings tracker with a Cloudflare Worker + D1 shared backend",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "tail": "wrangler tail",
+    "db:schema:remote": "wrangler d1 execute pennynest-production --remote --file=./migrations/0001_schema.sql",
+    "db:seed:remote": "wrangler d1 execute pennynest-production --remote --file=./migrations/0002_seed_admin.sql",
+    "db:schema:local": "wrangler d1 execute pennynest-production --local --file=./migrations/0001_schema.sql",
+    "db:seed:local": "wrangler d1 execute pennynest-production --local --file=./migrations/0002_seed_admin.sql",
+    "db:verify": "wrangler d1 execute pennynest-production --remote --command=\"SELECT id, email, role FROM users;\""
+  },
+  "dependencies": {
+    "hono": "^4.13.14"
+  },
+  "devDependencies": {
+    "wrangler": "^4.110.0"
+  }
+}

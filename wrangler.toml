@@ -1,0 +1,30 @@
+#:schema node_modules/wrangler/config-schema.json
+name = "pennynest"
+main = "src/index.ts"
+compatibility_date = "2026-10-23"
+
+# ---------------------------------------------------------------------------
+# Static assets (index.html, style.css, script.js, favicon.svg)
+# Wrangler serves a matching file directly; everything else (i.e. /api/*)
+# goes to the Worker in src/index.ts.
+# ---------------------------------------------------------------------------
+[assets]
+directory = "./public"
+binding = "ASSETS"
+
+# ---------------------------------------------------------------------------
+# D1 database
+# STEP 5 of the README: paste the real database_id printed by
+#   npx wrangler d1 create pennynest-production
+# into the value below. The Worker will not work until this is replaced.
+# ---------------------------------------------------------------------------
+[[d1_databases]]
+binding = "DB"
+database_name = "pennynest-production"
+database_id = "REPLACE_WITH_YOUR_DATABASE_ID"
+
+# ---------------------------------------------------------------------------
+# Optional: pin logs so `npx wrangler tail` is easy to read
+# ---------------------------------------------------------------------------
+[observability]
+enabled = true
